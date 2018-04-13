@@ -29,17 +29,21 @@ void menu() {
         return;
 }
 
-void do_login() {
-        if (0 == len)
-                array[len].id =10001;
-        else
-                array[len].id = array[len].id + 1;
-        printf("please input your username:\n");
-        scanf("s%", &array[len].username);
+void do_login(int len) {
+        printf("please input your id:\n");
+        int id;
+        scanf("s%", &id);
         printf("please input your password:\n");
-        scanf("s%", &array[len].password);
-        array[len++].balance = 0;
-        return len;
+        char  password[20];
+        scanf("s%", &password);
+        for (int i = 0; i < len; i++) {
+                if (id ==array[i].id && strcmp(password, array[i].password) == 0){
+                        printf("Welcom %s to login\n", array[i].username);
+                        return; 
+                }  
+        }
+        printf("you id or password error\n");
+        return;
 }
 
 int do_register(int len) {
@@ -82,5 +86,5 @@ int read_file() {
 void show(int len) {
         printf("id\tusername\tpassword\n");
         for(int i = 0; i < len; i++)
-                printf("%d\t%s\t%s\t%.2f\n", array[len].id, array[len].username, array[len].password, array[len].balance);
+                printf("%d\t%s\t%s\t%.2f\n", array[i].id, array[i].username, array[i].password, array[i].balance);
 }
