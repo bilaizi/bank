@@ -12,36 +12,69 @@ void menu() {
         printf("请输入你的选择：\n");
         scanf("d%",&select);
         switch(select) {
-                case 1:;
-                case 2: do_register(int len);
-                case 3:
-                   
+                case 1 :
+                        do_login(int len);
+                        break;
+                case 2 : 
+                        int len = do_register(len);
+                        write_file(len);
+                        break;
+                case 3 :
+                        exit(0);
+                        break;
+                default :
+                        printf("请输入你的选择：\n");
+                        break;  
         }
         return;
 }
 
-void do_login(int len) {
+void do_login() {
         if (0 == len)
                 array[len].id =10001;
         else
                 array[len].id = array[len].id + 1;
         printf("please input your username:\n");
-        scanf("s%",&array[len].username);
+        scanf("s%", &array[len].username);
         printf("please input your password:\n");
-        scanf("s%",&array[len].password);
+        scanf("s%", &array[len].password);
         array[len++].balance = 0;
         return len;
 }
 
-void do_register(int len) {
+int do_register(int len) {
         if (0 == len)
                 array[len].id =10001;
         else
                 array[len].id = array[len].id + 1;
         printf("please input your username:\n");
-        scanf("s%",&array[len].username);
+        scanf("s%", &array[len].username);
         printf("please input your password:\n");
-        scanf("s%",&array[len].password);
+        scanf("s%", &array[len].password);
         array[len++].balance = 0;
+        return len;
+}
+
+void write_file(int len) {
+        FILE *fp = fopen("person.txt", "w");
+        if (NuLL == fp){
+                printf("open failed \n");
+                return;
+        }
+        fwrite(array, sizeof(person), len, fp);
+        fclose(fp);
+        return;
+}
+
+int read_file() {
+        FILE *fp = fopen("person.txt", "r");
+        if (NuLL == fp){
+                printf("open failed \n");
+                return 0;
+        }
+        int len = 0;
+        while(fwrite(array, sizeof(person), len, fp) > 0){
+                len++;
+        }
         return len;
 }
