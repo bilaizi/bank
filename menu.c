@@ -73,7 +73,7 @@ int read_file() {
                 return 0;
         }
         int len = 0;
-        while(fwrite(array, sizeof(person), len, fp) > 0){
+        while(fread(array, sizeof(person), len, fp) > 0){
                 len++;
         }
         return len;
