@@ -78,3 +78,9 @@ int read_file() {
         }
         return len;
 }
+
+void show(int len) {
+        printf("id\tusername\tpassword\n");
+        for(int i = 0; i < len; i++)
+                printf("%d\t%s\t%s\t%.2f\n",array[len].id, array[len].username, array[len].password, array[len].balance);
+}
