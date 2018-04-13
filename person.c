@@ -17,17 +17,18 @@ void function(int i, int len) {
 			function(i, len);
                         break;
                 case 2 : 
-                        int len = do_register(len);
-                        write_file(len);
-                        break;
+                        do_withdraw(i, len);
+			function(i, len);
+			break;
                 case 3 :
-                        exit(0);
+                        do_transfer(i, len);
+			function(i, len);
                         break;
 		case 4:
                         exit(0);
                         break;
                 default :
-                        printf("请输入你的选择：\n");
+                        printf("error input\n");
                         break;  
         }
 	return;
@@ -36,7 +37,7 @@ void function(int i, int len) {
 void do_deposit(int i, int len){
 	float money;
 	printf("please input the money：\n");
-	scanf("d%",&money);
+	scanf("f%", &money);
 	array[i].balance += money;
 	write_file(len)
 }
@@ -44,11 +45,28 @@ void do_deposit(int i, int len){
 void do_withdraw(int i, int len){
 	float money;
 	printf("please input the money：\n");
-	scanf("d%",&money);
+	scanf("f%", &money);
 	if(money > array[i].balance){
 		printf("your balance is not enough：\n");
 		return;
 	}
+	array[i].balance -= money;
+	write_file(len);
+	return;
+}
+
+void do_transfer(int i, int len){
+	float money;
+	printf("please input the money：\n");
+	scanf("f%", &money);
+	if(money > array[i].balance){
+		printf("your balance is not enough：\n");
+		return;
+	}
+	array[i].balance -= money;
+	int rid;
+	printf("please input the receriver id：\n");
+	scanf("d%",&rid);
 	array[i].balance -= money;
 	write_file(len);
 	return;
