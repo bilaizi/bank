@@ -13,11 +13,14 @@ void menu() {
 }
 
 void do_register(int len) {
-    if (length)
-    printf("1 please input your username:\n");
-    scanf("1 please input your username:\n");
-    printf("1 用户登录\n");
-    printf("1 用户退出\n");
-     printf("1 \n");
-    return 0;
+        if (0 == len)
+                array[len].id =10001;
+        else
+                array[len].id = array[len].id + 1;
+        printf("please input your username:\n");
+        scanf("s%",&array[len].username);
+        printf("please input your password:\n");
+        scanf("s%",&array[len].password);
+        array[len++].balance = 0;
+        return len;
 }
