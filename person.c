@@ -11,12 +11,12 @@ void function(int i, int len) {
 	printf("*2 	withdraw	*\n");
 	printf("*3 	transfer	*\n");
 	printf("*4 	show		*\n");
-	printf("*5 	exit		*\n");
+	printf("*5 	return		*\n");
 	printf("*************************\n");
         int select;
         printf("please input the select：\n");
         scanf("%d",&select);
-        switch(select) {
+        switch(select) {	
                 case 1 :
                         do_deposit(i, len);
 			function(i, len);
@@ -29,8 +29,15 @@ void function(int i, int len) {
                         do_transfer(i, len);
 			function(i, len);
                         break;
-		case 4:
-                        exit(0);
+   		case 4 :
+			printf("id\tusername\tpassword\tbalance\n");
+                        printf("%d\t%s\t\t%s\t\t%.2f\n", array[i].id, array[i].username, array[i].password, array[i].balance);
+			printf("please input y or Y continue\n");
+                        while(getchar()=='\n');
+			function(i, len);
+                        break;
+		case 5:
+                        menu(len);
                         break;
                 default :
                         printf("error input\n");
@@ -44,7 +51,7 @@ void do_deposit(int i, int len){
 	printf("please input the money：\n");
 	scanf("%f", &money);
 	array[i].balance += money;
-	write_file(len)
+	write_file(len);
 }
 
 void do_withdraw(int i, int len){
@@ -71,9 +78,10 @@ void do_transfer(int i, int len){
 	array[i].balance -= money;
 	printf("please input transfer receiver id:\n");
         int rid;
-	scanf("s%", &rid);
-	for (int j = 0; j < len; j++) {
-                if (rid ==array[j].id){
+	scanf("%d", &rid);
+	int j = 0;
+	for (; j < len; j++) {
+        	if (rid ==array[j].id){
                         array[j].balance += money;
 			write_file(len);
 			return; 
