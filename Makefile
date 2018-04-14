@@ -1,5 +1,5 @@
 ALL:=test
-OBJECT:=%.o
+OBJECT:=main.o menu.o person.o
 CC:=gcc
 OPTION:=-g -Wall -lm
 $(ALL):$(OBJECT)
@@ -7,5 +7,5 @@ $(ALL):$(OBJECT)
 %.o:%.c
 	$(CC) -c $^ -o $@
 clean:
-	rm -rf $(ALL) $(OBJECT)
+	rm -rf $(ALL) $(OBJECT) *.txt
  
