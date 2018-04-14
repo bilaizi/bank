@@ -5,11 +5,13 @@
 #include "person.h"
 
 void menu() {
-        printf("1 用户注册：\n");
-        printf("2 用户登录：\n");
-        printf("3 用户退出：\n");
+        printf("*************************\n");
+	printf("*1	register	*\n");
+	printf("*2 	login   	*\n");
+	printf("*3 	exit		*\n");
+	printf("*************************\n");
         int select;
-        printf("请输入你的选择：\n");
+        printf("please input the select：\n");
         scanf("d%",&select);
         switch(select) {
                 case 1 :
