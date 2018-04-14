@@ -4,7 +4,7 @@
 #include "menu.h"
 #include "person.h"
 
-void menu() {
+void menu(int len) {
         printf("*************************\n");
 	printf("*1	login		*\n");
 	printf("*2 	register   	*\n");
