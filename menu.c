@@ -20,6 +20,7 @@ void menu() {
                 case 2 : 
                         int len = do_register(len);
                         write_file(len);
+			show(len);
                         break;
                 case 3 :
                         exit(0);
