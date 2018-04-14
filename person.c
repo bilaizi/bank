@@ -69,11 +69,11 @@ void do_transfer(int i, int len){
 		return;
 	}
 	array[i].balance -= money;
-	printf("please input transfer into id:\n");
-        int id;
-	scanf("s%", &id);
+	printf("please input transfer receiver id:\n");
+        int rid;
+	scanf("s%", &rid);
 	for (int j = 0; j < len; j++) {
-                if (id ==array[j].id){
+                if (rid ==array[j].id){
                         array[j].balance += money;
 			write_file(len);
 			return; 
