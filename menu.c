@@ -25,7 +25,7 @@ void menu() {
                         exit(0);
                         break;
                 default :
-                        printf("请输入你的选择：\n");
+                        printf("error input\n");
                         break;  
         }
         return;
