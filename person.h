@@ -6,4 +6,6 @@ typedef struct person {
 	char password[20];
 	float balance;
 } person,*pperson;
+person array[100];
+void function(int i, int len);
 #endif
