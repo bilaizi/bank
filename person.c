@@ -5,12 +5,17 @@
 #include "person.h"
 
 void function(int i, int len) {
-	printf("1 deposit：\n");
-        printf("2 withdraw：\n");
-        printf("3 transfer：\n");
+	system("clear");
+	printf("*************************\n");
+	printf("*1	deposit		*\n");
+	printf("*2 	withdraw	*\n");
+	printf("*3 	transfer	*\n");
+	printf("*4 	show		*\n");
+	printf("*5 	exit		*\n");
+	printf("*************************\n");
         int select;
         printf("please input the select：\n");
-        scanf("d%",&select);
+        scanf("%d",&select);
         switch(select) {
                 case 1 :
                         do_deposit(i, len);
@@ -37,7 +42,7 @@ void function(int i, int len) {
 void do_deposit(int i, int len){
 	float money;
 	printf("please input the money：\n");
-	scanf("f%", &money);
+	scanf("%f", &money);
 	array[i].balance += money;
 	write_file(len)
 }
@@ -45,7 +50,7 @@ void do_deposit(int i, int len){
 void do_withdraw(int i, int len){
 	float money;
 	printf("please input the money：\n");
-	scanf("f%", &money);
+	scanf("%f", &money);
 	if(money > array[i].balance){
 		printf("your balance is not enough：\n");
 		return;
@@ -58,16 +63,25 @@ void do_withdraw(int i, int len){
 void do_transfer(int i, int len){
 	float money;
 	printf("please input the money：\n");
-	scanf("f%", &money);
+	scanf("%f", &money);
 	if(money > array[i].balance){
 		printf("your balance is not enough：\n");
 		return;
 	}
 	array[i].balance -= money;
-	int rid;
-	printf("please input the receriver id：\n");
-	scanf("d%",&rid);
-	array[i].balance -= money;
-	write_file(len);
-	return;
+	printf("please input transfer into id:\n");
+        int id;
+	scanf("s%", &id);
+	for (int j = 0; j < len; j++) {
+                if (id ==array[j].id){
+                        array[j].balance += money;
+			write_file(len);
+			return; 
+                }  
+	}
+	if(len == j){
+		printf("your input transfer id is invalid\n");
+		array[i].balance += money;
+		return;
+	}
 }
