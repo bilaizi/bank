@@ -34,10 +34,10 @@ void menu() {
 void do_login(int len) {
         printf("please input your id:\n");
         int id;
-        scanf("s%", &id);
+        scanf("%s", &id);
         printf("please input your password:\n");
         char  password[20];
-        scanf("s%", &password);
+        scanf("%s", &password);
         for (int i = 0; i < len; i++) {
                 if (id ==array[i].id && strcmp(password, array[i].password) == 0){
                         printf("Welcom %s to login\n", array[i].username);
@@ -54,9 +54,9 @@ int do_register(int len) {
         else
                 array[len].id = array[len].id + 1;
         printf("please input your username:\n");
-        scanf("s%", &array[len].username);
+        scanf("%s", &array[len].username);
         printf("please input your password:\n");
-        scanf("s%", &array[len].password);
+        scanf("%s", &array[len].password);
         array[len++].balance = 0;
         return len;
 }
